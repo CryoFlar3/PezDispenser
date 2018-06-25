@@ -5,7 +5,40 @@ public class Example {
 
         PezDispenser dispenser = new PezDispenser("Spider-Man (Miles Morales)");
         System.out.printf("The dispenser is %s %n", dispenser.getCharacterName());
+
+        if (dispenser.isEmpty()){
+            System.out.println("Dispenser is empty");
+        }
+
         System.out.println("Filling dispenser with delicious PEZ...");
         dispenser.fill();
+
+        if (!dispenser.isEmpty()){
+            System.out.println("Dispenser is full");
+        }
+        while (dispenser.dispense()){
+            System.out.println("Chomp!");
+        }
+
+        if (dispenser.isEmpty()){
+            System.out.println("Ate all the PEZ");
+        }
+
+        dispenser.fill(4);
+        dispenser.fill(2);
+
+        while (dispenser.dispense()){
+            System.out.println("Chomp!");
+        }
+
+        try {
+            dispenser.fill(100);
+            System.out.println("Filling dispenser with delicious PEZ...");
+        } catch (IllegalArgumentException iae){
+            System.out.println("Whoa there!");
+            System.out.printf("The error was %s", iae.getMessage());
+        }
+
+
     }
 }

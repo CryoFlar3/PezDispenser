@@ -8,16 +8,35 @@ class PezDispenser {
         pezCount = 0;
     }
 
+    // fill() is an Overloaded Method
     public void fill() {
-        pezCount = MAX_PEZ;
+        fill(MAX_PEZ);
+    }
+
+    public void fill(int pezAmount){
+        int newAmount = pezCount + pezAmount;
+        if (newAmount > MAX_PEZ){
+            throw new IllegalArgumentException("Too Many PEZ!!!!");
+        }
+        pezCount = newAmount;
+    }
+
+    public boolean isEmpty(){
+        return pezCount == 0;
+    }
+
+    public boolean dispense(){
+        boolean wasDispensed = false;
+        if (!isEmpty()){
+            pezCount--;
+            wasDispensed = true;
+        }
+        return wasDispensed;
     }
 
     public String getCharacterName(){
         return mCharacterName;
     }
 
-    public String swapHead(String characterName){
-        String originalCharacterName = characterName;
-        return originalCharacterName;
-    }
+
 }
